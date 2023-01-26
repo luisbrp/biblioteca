@@ -25,4 +25,12 @@ public class Conector {
 			e.printStackTrace();
 		}
 	}
+
+	public Connection getCn() {
+		return cn;
+	}
+
+	public void setCn(Connection cn) {
+		this.cn = cn;
+	}
 }
