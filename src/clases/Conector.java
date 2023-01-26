@@ -5,13 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conector {
-	protected Connection cn;
+	
+	protected Connection con;
 	
 	public void Conectar() {
 		try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				String url = "jdbc:mysql://localhost/biblioteca";
-				cn = (Connection) DriverManager.getConnection(url, "root", "");
+				con = (Connection) DriverManager.getConnection(url, "root", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -20,17 +21,17 @@ public class Conector {
 	
 	public void cerrar() {
 		try {
-			cn.close();
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public Connection getCn() {
-		return cn;
+		return con;
 	}
 
-	public void setCn(Connection cn) {
-		this.cn = cn;
+	public void setCn(Connection con) {
+		this.con = con;
 	}
 }

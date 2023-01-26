@@ -5,6 +5,7 @@ public class Libro {
 	private String titulo;
 	private String autor;
 	private int num_pag;
+	
 	public int getId() {
 		return id;
 	}
