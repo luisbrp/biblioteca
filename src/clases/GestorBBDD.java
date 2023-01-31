@@ -9,22 +9,7 @@ public class GestorBBDD extends Conector {
 	
 	
 	public void insertarLibro (Libro libro) throws SQLException  {
-		
-		Scanner scan = new Scanner(System.in);
-		
-		System.out.println("Introduce el id del libro:");
-		libro.setId(Integer.parseInt(scan.nextLine()));
-		
-		System.out.println("Introduce el titulo del libro:");
-		libro.setTitulo(scan.nextLine());
-		
-		System.out.println("Introduce el autor del libro:");
-		libro.setAutor(scan.nextLine());
-		
-		System.out.println("Introduce el numero de la pagina del libro:");
-		libro.setNum_pag(Integer.parseInt(scan.nextLine()));
-		
-		
+
 		PreparedStatement preparedSt = con.prepareStatement("INSERT INTO  libros ( id, titulo, autor, num_pag) VALUES (?,?,?,?);");
 
 		preparedSt.setInt(1, libro.getId());
@@ -36,13 +21,9 @@ public class GestorBBDD extends Conector {
 	}
 	
 	public void eliminarLibro (int id) throws SQLException {
-		Scanner scan = new Scanner(System.in);
 		
 		Libro libro = new Libro();
-		
-		System.out.println("Introduce el id del Arbol a eliminar");
-		libro.setId(Integer.parseInt(scan.nextLine()));
-
+	
 		PreparedStatement preparedStel = con.prepareStatement("DELETE FROM libros WHERE id = ? ;");
 
 		preparedStel.setInt(1, libro.getId());
@@ -68,5 +49,17 @@ public class GestorBBDD extends Conector {
 		
 		return libro;
 		
+	}
+	
+	public void modificarLibro(Libro libro) throws SQLException {
+		
+		PreparedStatement preparedStModify = con.prepareStatement("UPDATE libros SET id= (?),titulo= (?),autor= (?),num_pag= WHERE id = (?);");
+		
+		preparedStModify.setInt(1, libro.getId());
+		preparedStModify.setString(2, libro.getTitulo());
+		preparedStModify.setString(3, libro.getAutor());
+		preparedStModify.setInt(4, libro.getNum_pag());
+		
+		preparedStModify.execute();
 	}
 }
