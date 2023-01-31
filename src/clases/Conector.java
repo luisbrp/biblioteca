@@ -8,7 +8,7 @@ public class Conector {
 	
 	protected Connection con;
 	
-	public void Conectar() {
+	public void conectar() {
 		try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				String url = "jdbc:mysql://localhost/biblioteca";
