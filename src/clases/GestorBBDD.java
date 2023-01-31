@@ -103,4 +103,28 @@ public class GestorBBDD extends Conector {
 		preparedStModify.execute();
 	}
 	
+	public Socio getSocio (int id) throws SQLException  {
+		
+		String sentenciaSelect = "SELECT * FROM socios WHERE id = ? ";
+		PreparedStatement preparedSt = con.prepareStatement(sentenciaSelect);
+		
+		Socio socio = new Socio();
+		
+		preparedSt.setInt(1, socio.getId());
+		ResultSet resultado = preparedSt.executeQuery();
+		
+		if (resultado.next()) {
+			socio.setId(resultado.getInt("id"));
+			socio.setNombre(resultado.getNString("nombre"));
+			socio.setApellido(resultado.getNString("apellido"));
+			socio.setDireccion(resultado.getString("direccion"));
+			socio.setPoblacion(resultado.getNString("poblacion"));
+			socio.setProvincia(resultado.getNString("provincia"));
+			socio.setDni(resultado.getInt("dni"));
+		}
+		
+		return socio;
+		
+	}
+	
 }

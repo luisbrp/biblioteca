@@ -42,4 +42,52 @@ public class FormulariosDeDatos {
 		
 		return id;
 	}
+	
+	public static Socio pedirDatosSocio(Scanner scan) {
+		
+		Socio socio = new Socio();
+		
+		System.out.println("Introduce el id del socio:");
+		socio.setId(Integer.parseInt(scan.nextLine()));
+		
+		System.out.println("Introduce el nombre del socio:");
+		socio.setNombre(scan.nextLine());
+		
+		System.out.println("Introduce el apellido del socio:");
+		socio.setApellido(scan.nextLine());
+		
+		System.out.println("Introduce la direccion del socio:");
+		socio.setDireccion(scan.nextLine());
+		
+		System.out.println("Introduce la poblacion del socio:");
+		socio.setPoblacion(scan.nextLine());
+		
+		System.out.println("Introduce la provincia del socio:");
+		socio.setProvincia(scan.nextLine());
+		
+		System.out.println("Introduce el id del socio:");
+		socio.setId(Integer.parseInt(scan.nextLine()));
+		
+		return socio;
+	}
+	
+		public static Socio modificarDatosSocio(Socio socio, Scanner scan) {
+		
+		System.out.println("Introduce el id del socio:");
+
+		socio.setId(Integer.parseInt(scan.nextLine()));
+		
+		return socio;
+	}
+		
+		public static int pedirIdSocio(Scanner scan) {
+			Socio socio = new Socio();
+			
+			System.out.println("Introduce el id del socio");
+			socio.setId(Integer.parseInt(scan.nextLine()));
+			
+			int id = socio.getId();
+			
+			return id;
+		}
 }
