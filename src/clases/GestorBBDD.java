@@ -62,4 +62,45 @@ public class GestorBBDD extends Conector {
 		
 		preparedStModify.execute();
 	}
+	
+	public void insertarSocio(Socio socio) throws SQLException {
+		PreparedStatement preparedSt = con.prepareStatement("INSERT INTO  socios ( id, nombre, apellido, direccion, poblacion, provincia, dni) VALUES (?,?,?,?,?,?,?);");
+
+		preparedSt.setInt(1, socio.getId());
+		preparedSt.setString(2, socio.getNombre());
+		preparedSt.setString(3, socio.getApellido());
+		preparedSt.setString(4, socio.getDireccion());
+		preparedSt.setString(5, socio.getPoblacion());
+		preparedSt.setString(6, socio.getProvincia());
+		preparedSt.setInt(7, socio.getDni());
+		
+		preparedSt.execute();
+	}
+	
+	public void eliminarSocio (int id) throws SQLException {
+		
+		Socio socio = new Socio();
+	
+		PreparedStatement preparedStel = con.prepareStatement("DELETE FROM socios WHERE id = ? ;");
+
+		preparedStel.setInt(1, socio.getId());
+		preparedStel.execute();
+	}
+	
+	public void modificarSocio(Socio socio) throws SQLException {
+		
+		PreparedStatement preparedStModify = con.prepareStatement("UPDATE socios SET id= (?),nombre= (?),apellido= (?),direccion= (?),"
+		+ "poblacion = (?),provincia = (?),dni =  WHERE id = (?);");
+		
+		preparedStModify.setInt(1, socio.getId());
+		preparedStModify.setString(2, socio.getNombre());
+		preparedStModify.setString(3, socio.getApellido());
+		preparedStModify.setString(4, socio.getDireccion());
+		preparedStModify.setString(5, socio.getPoblacion());
+		preparedStModify.setString(6, socio.getProvincia());
+		preparedStModify.setInt(7, socio.getDni());
+		
+		preparedStModify.execute();
+	}
+	
 }
