@@ -1,16 +1,72 @@
 package clases;
 
-public class GestorBBDD {
-	public void insertarLibro (Libro libro) {
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class GestorBBDD extends Conector {
+	
+	
+	public void insertarLibro (Libro libro) throws SQLException  {
 		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Introduce el id del libro:");
+		libro.setId(Integer.parseInt(scan.nextLine()));
+		
+		System.out.println("Introduce el titulo del libro:");
+		libro.setTitulo(scan.nextLine());
+		
+		System.out.println("Introduce el autor del libro:");
+		libro.setAutor(scan.nextLine());
+		
+		System.out.println("Introduce el numero de la pagina del libro:");
+		libro.setNum_pag(Integer.parseInt(scan.nextLine()));
+		
+		
+		PreparedStatement preparedSt = con.prepareStatement("INSERT INTO  libros ( id, titulo, autor, num_pag) VALUES (?,?,?,?);");
+
+		preparedSt.setInt(1, libro.getId());
+		preparedSt.setString(2, libro.getTitulo());
+		preparedSt.setString(3, libro.getAutor());
+		preparedSt.setInt(4, libro.getNum_pag());
+		
+		preparedSt.execute();
 	}
 	
-	public void eliminarLibro (int id) {
+	public void eliminarLibro (int id) throws SQLException {
+		Scanner scan = new Scanner(System.in);
 		
+		Libro libro = new Libro();
+		
+		System.out.println("Introduce el id del Arbol a eliminar");
+		libro.setId(Integer.parseInt(scan.nextLine()));
+
+		PreparedStatement preparedStel = con.prepareStatement("DELETE FROM libros WHERE id = ? ;");
+
+		preparedStel.setInt(1, libro.getId());
+		preparedStel.execute();
 	}
 	
-	public Libro getLibro (int id) {
-		return null;
+	public Libro getLibro (int id) throws SQLException  {
+		
+		String sentenciaSelect = "SELECT * FROM libros WHERE id = ? ";
+		PreparedStatement preparedSt = con.prepareStatement(sentenciaSelect);
+		
+		Libro libro = new Libro();
+		
+		preparedSt.setInt(1, libro.getId());
+		ResultSet resultado = preparedSt.executeQuery();
+		
+		if (resultado.next()) {
+			libro.setId(resultado.getInt("id"));
+			libro.setTitulo(resultado.getNString("titulo"));
+			libro.setAutor(resultado.getNString("autor"));
+			libro.setNum_pag(resultado.getInt("num_pag"));
+		}
+		
+		return libro;
 		
 	}
 }
