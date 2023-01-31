@@ -1,14 +1,41 @@
 package clases;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class GestorLibros {
-	
-	
-	
-	public static void run (Scanner scan) {
+
+	public void run(Scanner scan) throws SQLException {
+		int opcion;
+		Libro libro = new Libro();
+		GestorBBDD gbd = new GestorBBDD();
 		
-		
+		do {
+			Menu.mostrarMenuLibros();
+			opcion=Integer.parseInt(scan.nextLine());
+
+			switch (opcion) {
+			case Menu.INSERTAR_LIBRO:
+				System.out.println("Insertar libro");
+				libro = FormulariosDeDatos.pedirDatosLibro(scan);
+				gbd = new GestorBBDD();
+				gbd.conectar();
+				gbd.insertarLibro(libro);
+				gbd.cerrar();
+				break;
+			case Menu.ELIMINAR_LIBRO:
+				
+				break;
+			case Menu.VER_LIBROS:
+				
+				break;
+			case Menu.SALIR:
+				System.out.println("Bye!!!");
+				break;
+			default:
+				System.out.println("Opcion incorrecta!");
+			}
+
+		} while (opcion != Menu.SALIR);
 	}
-	
 }
