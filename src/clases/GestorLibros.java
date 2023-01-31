@@ -24,7 +24,11 @@ public class GestorLibros {
 				gbd.cerrar();
 				break;
 			case Menu.ELIMINAR_LIBRO:
-				
+				System.out.println("Eliminar libro");
+				int id = FormulariosDeDatos.pedirIdLibro(scan);
+				gbd.conectar();
+				gbd.eliminarLibro(id);
+				gbd.cerrar();
 				break;
 			case Menu.VER_LIBROS:
 				
