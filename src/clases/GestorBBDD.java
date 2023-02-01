@@ -28,6 +28,8 @@ public class GestorBBDD extends Conector {
 
 		preparedStel.setInt(1, libro.getId());
 		preparedStel.execute();
+		
+		
 	}
 	
 	public Libro getLibro (int id) throws SQLException  {
@@ -42,8 +44,8 @@ public class GestorBBDD extends Conector {
 		
 		if (resultado.next()) {
 			libro.setId(resultado.getInt("id"));
-			libro.setTitulo(resultado.getNString("titulo"));
-			libro.setAutor(resultado.getNString("autor"));
+			libro.setTitulo(resultado.getString("titulo"));
+			libro.setAutor(resultado.getString("autor"));
 			libro.setNum_pag(resultado.getInt("num_pag"));
 		}
 		
@@ -53,7 +55,7 @@ public class GestorBBDD extends Conector {
 	
 	public void modificarLibro(Libro libro) throws SQLException {
 		
-		PreparedStatement preparedStModify = con.prepareStatement("UPDATE libros SET id= (?),titulo= (?),autor= (?),num_pag= WHERE id = (?);");
+		PreparedStatement preparedStModify = con.prepareStatement("UPDATE libros SET titulo= (?),autor= (?),num_pag=(?) WHERE id = (?);");
 		
 		preparedStModify.setInt(1, libro.getId());
 		preparedStModify.setString(2, libro.getTitulo());
@@ -115,11 +117,11 @@ public class GestorBBDD extends Conector {
 		
 		if (resultado.next()) {
 			socio.setId(resultado.getInt("id"));
-			socio.setNombre(resultado.getNString("nombre"));
-			socio.setApellido(resultado.getNString("apellido"));
+			socio.setNombre(resultado.getString("nombre"));
+			socio.setApellido(resultado.getString("apellido"));
 			socio.setDireccion(resultado.getString("direccion"));
-			socio.setPoblacion(resultado.getNString("poblacion"));
-			socio.setProvincia(resultado.getNString("provincia"));
+			socio.setPoblacion(resultado.getString("poblacion"));
+			socio.setProvincia(resultado.getString("provincia"));
 			socio.setDni(resultado.getInt("dni"));
 		}
 		
