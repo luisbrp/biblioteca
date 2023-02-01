@@ -11,6 +11,7 @@ public class GestorLibros {
 		GestorBBDD gbd = new GestorBBDD();
 		
 		do {
+			System.out.println("------MENU GESTOR LIBRO-------");
 			Menu.mostrarMenuLibros();
 			opcion=Integer.parseInt(scan.nextLine());
 
