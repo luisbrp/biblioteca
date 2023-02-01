@@ -81,19 +81,19 @@ public class FormulariosDeDatos {
 	
 		public static Socio modificarDatosSocio(Socio socio, Scanner scan) {
 		
-			System.out.println("Introduce el a cambiar nombre del socio:");
+			System.out.println("Introduce el nombre a cambiar del socio:");
 			socio.setNombre(scan.nextLine());
 			
-			System.out.println("Introduce el a cambiar apellido del socio:");
+			System.out.println("Introduce el  apellido a cambiar del socio:");
 			socio.setApellido(scan.nextLine());
 			
-			System.out.println("Introduce la a cambiar direccion del socio:");
+			System.out.println("Introduce la  direccion del socio:");
 			socio.setDireccion(scan.nextLine());
 			
-			System.out.println("Introduce la a cambiar poblacion del socio:");
+			System.out.println("Introduce la poblacion a cambiar del socio:");
 			socio.setPoblacion(scan.nextLine());
 			
-			System.out.println("Introduce la a cambiar provincia del socio:");
+			System.out.println("Introduce la provincia a cambiar del socio:");
 			socio.setProvincia(scan.nextLine());
 		
 		return socio;
