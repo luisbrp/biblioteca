@@ -10,12 +10,14 @@ public class GestorBiblioteca {
 		GestorLibros gl = new GestorLibros();
 		GestorSocios gs = new GestorSocios();
 		do {
-			Menu.mostrarMenuPrincipal();;
+			System.out.println("------MENU-------");
+			Menu.mostrarMenuPrincipal();
 			Scanner scan =  new Scanner(System.in);
 			opcion=Integer.parseInt(scan.nextLine());
 
 			switch (opcion) {
 			case Menu.GESTIONAR_LIBROS:
+				
 				gl.run(scan);
 				break;
 			case Menu.GESTIONAR_SOCIOS:
