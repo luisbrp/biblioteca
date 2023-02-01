@@ -26,8 +26,16 @@ public class FormulariosDeDatos {
 	public static Libro modificarDatosLibro(Libro libro, Scanner scan) {
 		
 		System.out.println("Introduce el id del libro:");
-
 		libro.setId(Integer.parseInt(scan.nextLine()));
+		
+		System.out.println("Introduce el titulo a cambiar del libro:");
+		libro.setTitulo(scan.nextLine());
+		
+		System.out.println("Introduce el autor del libro:");
+		libro.setAutor(scan.nextLine());
+		
+		System.out.println("Introduce el numero de la pagina del libro:");
+		libro.setNum_pag(Integer.parseInt(scan.nextLine()));
 		
 		return libro;
 	}
@@ -73,9 +81,20 @@ public class FormulariosDeDatos {
 	
 		public static Socio modificarDatosSocio(Socio socio, Scanner scan) {
 		
-		System.out.println("Introduce el id del socio:");
-
-		socio.setId(Integer.parseInt(scan.nextLine()));
+			System.out.println("Introduce el a cambiar nombre del socio:");
+			socio.setNombre(scan.nextLine());
+			
+			System.out.println("Introduce el a cambiar apellido del socio:");
+			socio.setApellido(scan.nextLine());
+			
+			System.out.println("Introduce la a cambiar direccion del socio:");
+			socio.setDireccion(scan.nextLine());
+			
+			System.out.println("Introduce la a cambiar poblacion del socio:");
+			socio.setPoblacion(scan.nextLine());
+			
+			System.out.println("Introduce la a cambiar provincia del socio:");
+			socio.setProvincia(scan.nextLine());
 		
 		return socio;
 	}
