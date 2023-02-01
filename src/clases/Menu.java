@@ -31,12 +31,14 @@ public class Menu {
 	public static void mostrarMenuLibros() {
 		System.out.println(INSERTAR_LIBRO + ". Insertar Libro");
 		System.out.println(ELIMINAR_LIBRO + ". Eliminar Libro");
+		System.out.println(MODIFICAR_LIBRO + ". Modificar Libro");
 		System.out.println(VER_LIBROS +". Ver libros");
 	}
 	
 	public static void mostrarMenuSocios() {
 		System.out.println(INSERTAR_SOCIO + ". Insertar Socio");
 		System.out.println(ELIMINAR_SOCIO + ". Eliminar Socio");
+		System.out.println(MODIFICAR_SOCIO + ". Modificar Socio");
 		System.out.println(VER_SOCIOS + ". Ver socios");
 	}
 	
