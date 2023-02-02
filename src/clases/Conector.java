@@ -27,11 +27,11 @@ public class Conector {
 		}
 	}
 
-	public Connection getCn() {
+	public Connection getCon() {
 		return con;
 	}
 
-	public void setCn(Connection con) {
+	public void setCon(Connection con) {
 		this.con = con;
 	}
 }

@@ -7,10 +7,11 @@ import java.util.Scanner;
 
 public class GestorBBDD extends Conector {
 	
+	PreparedStatement preparedSt;
 	
 	public void insertarLibro (Libro libro) throws SQLException  {
 
-		PreparedStatement preparedSt = con.prepareStatement("INSERT INTO  libros ( id, titulo, autor, num_pag) VALUES (?,?,?,?);");
+		preparedSt = con.prepareStatement("INSERT INTO  libros ( id, titulo, autor, num_pag) VALUES (?,?,?,?);");
 
 		preparedSt.setInt(1, libro.getId());
 		preparedSt.setString(2, libro.getTitulo());
@@ -18,28 +19,30 @@ public class GestorBBDD extends Conector {
 		preparedSt.setInt(4, libro.getNum_pag());
 		
 		preparedSt.execute();
+		
+		System.out.println("El libro se ha introducido con  exito!");
 	}
 	
 	public void eliminarLibro (int id) throws SQLException {
 		
-		Libro libro = new Libro();
-	
-		PreparedStatement preparedStel = con.prepareStatement("DELETE FROM libros WHERE id = ? ;");
-
-		preparedStel.setInt(1, libro.getId());
-		preparedStel.execute();
+		preparedSt = con.prepareStatement("DELETE FROM libros WHERE id=?");
 		
+		preparedSt.setInt(1, id);
+		
+		preparedSt.execute();
+		
+		System.out.println("El libro se ha eliminado con  exito!");
 		
 	}
 	
 	public Libro getLibro (int id) throws SQLException  {
 		
-		String sentenciaSelect = "SELECT * FROM libros WHERE id = ? ";
-		PreparedStatement preparedSt = con.prepareStatement(sentenciaSelect);
+		preparedSt = con.prepareStatement("SELECT * FROM libros WHERE id = ? ");
 		
 		Libro libro = new Libro();
 		
-		preparedSt.setInt(1, libro.getId());
+		preparedSt.setInt(1, id);
+		
 		ResultSet resultado = preparedSt.executeQuery();
 		
 		if (resultado.next()) {
@@ -55,18 +58,22 @@ public class GestorBBDD extends Conector {
 	
 	public void modificarLibro(Libro libro) throws SQLException {
 		
-		PreparedStatement preparedStModify = con.prepareStatement("UPDATE libros SET titulo= (?),autor= (?),num_pag=(?) WHERE id = (?);");
+		preparedSt = con.prepareStatement("UPDATE libros SET titulo=?, autor=?, num_pag=? WHERE id=?");
 		
-		preparedStModify.setInt(1, libro.getId());
-		preparedStModify.setString(2, libro.getTitulo());
-		preparedStModify.setString(3, libro.getAutor());
-		preparedStModify.setInt(4, libro.getNum_pag());
+		preparedSt.setString(1,libro.getTitulo());
+		preparedSt.setString(2, libro.getAutor());
+		preparedSt.setInt(3, libro.getNum_pag());
+		preparedSt.setInt(4, libro.getId());
+		preparedSt.executeUpdate();
 		
-		preparedStModify.execute();
+		System.out.println("El libro se ha modificado con  exito!");
+		
 	}
 	
 	public void insertarSocio(Socio socio) throws SQLException {
-		PreparedStatement preparedSt = con.prepareStatement("INSERT INTO  socios ( id, nombre, apellido, direccion, poblacion, provincia, dni) VALUES (?,?,?,?,?,?,?);");
+		
+		preparedSt = con.prepareStatement("INSERT INTO  socios ( id, nombre, apellido, direccion, poblacion, "
+		+ "provincia, dni) VALUES (?,?,?,?,?,?,?);");
 
 		preparedSt.setInt(1, socio.getId());
 		preparedSt.setString(2, socio.getNombre());
@@ -80,39 +87,37 @@ public class GestorBBDD extends Conector {
 	}
 	
 	public void eliminarSocio (int id) throws SQLException {
-		
-		Socio socio = new Socio();
 	
-		PreparedStatement preparedStel = con.prepareStatement("DELETE FROM socios WHERE id = ? ;");
+		preparedSt = con.prepareStatement("DELETE FROM socios WHERE id = ? ;");
 
-		preparedStel.setInt(1, socio.getId());
-		preparedStel.execute();
+		preparedSt.setInt(1, id);
+		preparedSt.execute();
 	}
 	
 	public void modificarSocio(Socio socio) throws SQLException {
 		
-		PreparedStatement preparedStModify = con.prepareStatement("UPDATE socios SET id= (?),nombre= (?),apellido= (?),direccion= (?),"
+		preparedSt = con.prepareStatement("UPDATE socios SET id= (?),nombre= (?),apellido= (?),direccion= (?),"
 		+ "poblacion = (?),provincia = (?),dni =  WHERE id = (?);");
 		
-		preparedStModify.setInt(1, socio.getId());
-		preparedStModify.setString(2, socio.getNombre());
-		preparedStModify.setString(3, socio.getApellido());
-		preparedStModify.setString(4, socio.getDireccion());
-		preparedStModify.setString(5, socio.getPoblacion());
-		preparedStModify.setString(6, socio.getProvincia());
-		preparedStModify.setInt(7, socio.getDni());
+		preparedSt.setInt(1, socio.getId());
+		preparedSt.setString(2, socio.getNombre());
+		preparedSt.setString(3, socio.getApellido());
+		preparedSt.setString(4, socio.getDireccion());
+		preparedSt.setString(5, socio.getPoblacion());
+		preparedSt.setString(6, socio.getProvincia());
+		preparedSt.setInt(7, socio.getDni());
 		
-		preparedStModify.execute();
+		preparedSt.execute();
 	}
 	
 	public Socio getSocio (int id) throws SQLException  {
 		
-		String sentenciaSelect = "SELECT * FROM socios WHERE id = ? ";
-		PreparedStatement preparedSt = con.prepareStatement(sentenciaSelect);
+		
+		preparedSt = con.prepareStatement("SELECT * FROM socios WHERE id = ? ");
 		
 		Socio socio = new Socio();
 		
-		preparedSt.setInt(1, socio.getId());
+		preparedSt.setInt(1, id);
 		ResultSet resultado = preparedSt.executeQuery();
 		
 		if (resultado.next()) {
