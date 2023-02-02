@@ -17,7 +17,6 @@ public class GestorBiblioteca {
 
 			switch (opcion) {
 			case Menu.GESTIONAR_LIBROS:
-				
 				gl.run(scan);
 				break;
 			case Menu.GESTIONAR_SOCIOS:
