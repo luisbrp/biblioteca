@@ -1,6 +1,7 @@
 package clases;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestorLibros {
@@ -8,6 +9,8 @@ public class GestorLibros {
 	public void run(Scanner scan) throws SQLException {
 		int opcion;
 		Libro libro = new Libro();
+		Visor visor = new Visor();
+		ArrayList<Libro> libros = new ArrayList<Libro>();
 		GestorBBDD gbd = new GestorBBDD();
 		
 		do {
@@ -35,7 +38,10 @@ public class GestorLibros {
 				gbd.cerrar();
 				break;
 			case Menu.VER_LIBROS:
-				
+				gbd.conectar();
+				libros = gbd.getLibros();
+				Visor.mostrarLibros(libros);
+				gbd.cerrar();
 				break;
 			case Menu.SALIR:
 				
