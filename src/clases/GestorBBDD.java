@@ -3,6 +3,7 @@ package clases;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestorBBDD extends Conector {
@@ -53,6 +54,31 @@ public class GestorBBDD extends Conector {
 		}
 		
 		return libro;
+		
+	}
+	
+	public ArrayList<Libro> getLibros() throws SQLException{
+		
+		ArrayList<Libro> libros = new ArrayList<Libro>();
+		
+		preparedSt = con.prepareStatement("SELECT * FROM libros");
+
+		ResultSet resultado = preparedSt.executeQuery();
+		
+		while(resultado.next()) {
+			
+			Libro libro = new Libro();
+			
+			libro.setId(resultado.getInt(1));
+			libro.setTitulo(resultado.getString(2));
+			libro.setAutor(resultado.getString(3));
+			libro.setNum_pag(resultado.getInt(4));
+			
+			libros.add(libro);
+			
+		}
+
+		return libros;
 		
 	}
 	
