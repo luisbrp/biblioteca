@@ -1,6 +1,11 @@
 package clases;
 
 public class Libro {
+	@Override
+	public String toString() {
+		return "Libro [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", num_pag=" + num_pag + "]";
+	}
+	
 	private int id;
 	private String titulo;
 	private String autor;
