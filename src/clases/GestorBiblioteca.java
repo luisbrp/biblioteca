@@ -20,10 +20,10 @@ public class GestorBiblioteca {
 				gl.run(scan);
 				break;
 			case Menu.GESTIONAR_SOCIOS:
-				
+				gs.run(scan);
 				break;
 			case Menu.GESTIONAR_PRESTAMOS:
-				
+				GestorPrestamos.run(scan);
 				break;
 			case Menu.SALIR:
 				System.out.println("Bye!!!");
