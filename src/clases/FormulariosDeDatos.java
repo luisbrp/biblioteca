@@ -1,6 +1,7 @@
 package clases;
 
 import java.util.Scanner;
+import java.util.Date;
 
 public class FormulariosDeDatos {
 	
@@ -73,7 +74,7 @@ public class FormulariosDeDatos {
 		System.out.println("Introduce la provincia del socio:");
 		socio.setProvincia(scan.nextLine());
 		
-		System.out.println("Introduce el id del socio:");
+		System.out.println("Introduce el dni del socio:");
 		socio.setId(Integer.parseInt(scan.nextLine()));
 		
 		return socio;
@@ -109,4 +110,18 @@ public class FormulariosDeDatos {
 			
 			return id;
 		}
+		
+		public static Prestamo getDatosDePrestamo(Scanner scan) {
+			Prestamo prestamo = new Prestamo();
+			System.out.println("Intdoduce un id de Libro");
+			prestamo.setId_libro(Integer.parseInt(scan.nextLine()));
+
+			System.out.println("Intdoduce un id de socio");
+			prestamo.setId_socio(Integer.parseInt(scan.nextLine()));
+			
+			prestamo.setFecha(new Date()); 
+			prestamo.setDevuelto(false); 
+			return prestamo;
+		}
+
 }
