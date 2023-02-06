@@ -19,13 +19,15 @@ public class Menu {
 	
 	
 	final static int REALIZAR_PRESTAMO=1;
-	
+	public static final int DEVOLVER_LIBRO = 2;
 	final static int SALIR=0;
+	
 	
 	public static void mostrarMenuPrincipal() {
 		System.out.println(GESTIONAR_LIBROS +". Gestionar Libros");
 		System.out.println(GESTIONAR_SOCIOS +". Gestionar Socios");
 		System.out.println(GESTIONAR_PRESTAMOS +" .Gestionar Prestamos");
+		System.out.println(SALIR +". Salir");
 	}
 	
 	public static void mostrarMenuLibros() {
@@ -44,5 +46,8 @@ public class Menu {
 	
 	public static void mostrarMenuPrestamos() {
 		System.out.println(REALIZAR_PRESTAMO +". Realizar prestamo");
+		System.out.println(DEVOLVER_LIBRO +". Devolver libro");
 	}
+	
+	
 }
