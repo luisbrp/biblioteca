@@ -1,6 +1,11 @@
 package clases;
 
 public class Socio {
+	@Override
+	public String toString() {
+		return "Socio [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
+				+ ", poblacion=" + poblacion + ", provincia=" + provincia + ", dni=" + dni + "]";
+	}
 	private int id;
 	private String nombre;
 	private String apellido;
