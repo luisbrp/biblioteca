@@ -25,4 +25,18 @@ public class Visor {
 		
 	}
 	
+	public static void mostrarSocios(ArrayList<Socio> socios) {
+		
+		System.out.println("Lista de socios:");
+		for (int i = 0; i < socios.size(); i++) {
+		Socio socio = socios.get(i);
+			System.out.println(socio.toString());
+			
+		}
+	}
+	
+	public static void mostrarSocio(Socio socio) {
+		
+	}
+	
 }
